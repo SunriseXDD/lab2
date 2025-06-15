@@ -18,13 +18,14 @@ class MainActivity : ComponentActivity() {
         val editText1 = findViewById<EditText>(R.id.editText1)
         val editText2 = findViewById<EditText>(R.id.editText2)
         val button = findViewById<Button>(R.id.button)
-        val resultTextView = findViewById<TextView>(R.id.resultTextView)
+        val resultView = findViewById<TextView>(R.id.resultTextView)
 
         button.setOnClickListener {
             val a = editText1.text.toString().toDouble()
             val n = editText2.text.toString().toInt()
 
             val (result, steps) = calculate(a, n)
+            resultView.text = "Сумма: $result\n\nШаги:\n${steps.joinToString("\n")}"
         }
         }
     }
@@ -35,7 +36,7 @@ private fun calculate (a: Double, n: Int): Pair<Double, List<String>>
     var sum = 0.0
     var denominator = 1.0
 
-    for (k in 0..n) {
+    for (k in 1..n) {
         if (k > 0) {
             denominator *= (a + k - 1)
         }
