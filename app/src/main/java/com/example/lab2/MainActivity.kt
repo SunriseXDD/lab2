@@ -8,6 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import java.math.BigDecimal
+import java.math.RoundingMode
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,9 +29,24 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-private fun calculate (a: Double, n: Int): Pair<BigDecimal, List<String>>
+private fun calculate (a: Double, n: Int): Pair<Double, List<String>>
 {
+    val steps = mutableListOf<String>()
+    var sum = 0.0
+    var denominator = 1.0
 
+    for (k in 0..n) {
+        if (k > 0) {
+            denominator *= (a + k - 1)
+        }
+        val term = 1.0 / denominator
+        sum += term
+
+        // Запоминаем шаг для вывода
+        steps.add("Шаг $k: 1/${if (k == 0) "1" else "%.2f".format(denominator)} = $term")
+    }
+
+    return Pair(sum, steps)
 }
 
 
