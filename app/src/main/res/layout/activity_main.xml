@@ -22,4 +22,18 @@
         android:hint="Введие n (количество членов ряда)"
         android:inputType="text"
         android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Делаем"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="377dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="16dp"
+        android:textSize="18sp" />
 </LinearLayout>
